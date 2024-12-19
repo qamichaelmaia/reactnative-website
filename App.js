@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Tela Inicial</Text>
+      <Text style={styles.text}>Tela de Informação</Text>
     </View>
   );
 }
@@ -33,7 +33,7 @@ export default function App() {
         <Stack.Screen
           name="Login"
           component={LoginScreen} 
-          options={{ title: 'Login' }}
+          options={{ title: 'Tela de Login' }}
         />
         <Stack.Screen
           name="Home"

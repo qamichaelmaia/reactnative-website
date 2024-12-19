@@ -19,14 +19,14 @@ export default function LoginScreen({ navigation }) {
       <Text style={styles.title}>Login</Text>
       <TextInput
         style={styles.input}
-        placeholder="Email"
+        placeholder="E-mail"
         keyboardType="email-address"
         value={email}
         onChangeText={setEmail}
       />
       <TextInput
         style={styles.input}
-        placeholder="Senha"
+        placeholder="Password"
         secureTextEntry
         value={password}
         onChangeText={setPassword}
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   input: {
-    width: '80%',
+    width: '50%',
     height: 50,
     borderWidth: 1,
     borderColor: '#ccc',
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   button: {
-    width: '80%',
+    width: '20%',
     height: 50,
     backgroundColor: '#007BFF',
     justifyContent: 'center',
