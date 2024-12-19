@@ -6,9 +6,9 @@ export default function LoginScreen({ navigation }) {
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    if (email === 'admin@admin.com' && password === '123456') {
+    if (email === 'admin@admin.com' && password === 'kognit123') {
       alert('Login realizado com sucesso!');
-      navigation.navigate('Home'); // Navega para a tela inicial
+      navigation.navigate('Home'); 
     } else {
       alert('Credenciais inválidas!');
     }
