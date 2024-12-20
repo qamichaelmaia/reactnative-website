@@ -1,4 +1,3 @@
-// notifications/NotificationsPage.js
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, Modal, StyleSheet } from 'react-native';
 
@@ -20,9 +19,9 @@ export default function NotificationsPage({ modalVisible, onClose }) {
   // Disparar a consulta de API assim que o modal for aberto
   useEffect(() => {
     if (modalVisible) {
-      fetchNotifications(); // Chama a função para buscar as notificações
+      fetchNotifications(); 
     }
-  }, [modalVisible]); // A dependência é modalVisible, ou seja, será chamado quando o modal for aberto
+  }, [modalVisible]); 
 
   return (
     <Modal animationType="fade" transparent={true} visible={modalVisible} onRequestClose={onClose}>
