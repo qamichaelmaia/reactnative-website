@@ -1,27 +1,45 @@
 // notifications/NotificationsPage.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, Modal, StyleSheet } from 'react-native';
 
 export default function NotificationsPage({ modalVisible, onClose }) {
+  const [notifications, setNotifications] = useState([]);
+
+  // Função para fazer a requisição da API
+  const fetchNotifications = async () => {
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts?userId=1');
+      const data = await response.json();
+      // Limita a consulta a 3 notificações
+      setNotifications(data.slice(0, 3)); // Pega apenas os primeiros 3 itens
+    } catch (error) {
+      console.error('Erro ao buscar notificações:', error);
+    }
+  };
+
+  // Disparar a consulta de API assim que o modal for aberto
+  useEffect(() => {
+    if (modalVisible) {
+      fetchNotifications(); // Chama a função para buscar as notificações
+    }
+  }, [modalVisible]); // A dependência é modalVisible, ou seja, será chamado quando o modal for aberto
+
   return (
     <Modal animationType="fade" transparent={true} visible={modalVisible} onRequestClose={onClose}>
       <View style={styles.modalBackground}>
         <View style={styles.modalContainer}>
           <Text style={styles.modalTitle}>Editar notificações</Text>
 
-          <View style={styles.notificationBox}>
-            <Text style={styles.notificationTitle}>Oba! Você vai receber rendimentos</Text>
-            <Text style={styles.notificationText}>
-              Atenção! Hoje você vai receber dos ativos GGRC11, GGRC13 o total de R$...
-            </Text>
-          </View>
-
-          <View style={styles.notificationBox}>
-            <Text style={styles.notificationTitle}>Oba! Você vai receber rendimentos</Text>
-            <Text style={styles.notificationText}>
-              Atenção! Hoje você vai receber dos ativos GGRC11, GGRC13 o total de R$...
-            </Text>
-          </View>
+          {notifications.length === 0 ? (
+            <Text>Carregando notificações...</Text>
+          ) : (
+            notifications.map((notification) => (
+              <View key={notification.id} style={styles.notificationBox}>
+                <Text style={styles.notificationTitle}>{notification.title}</Text>
+                <Text style={styles.notificationText}>{notification.body}</Text>
+              </View>
+            ))
+          )}
 
           <TouchableOpacity onPress={onClose} style={styles.closeButton}>
             <Text style={styles.closeButtonText}>Fechar</Text>
