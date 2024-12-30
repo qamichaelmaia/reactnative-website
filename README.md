@@ -1,4 +1,5 @@
 # Projeto de Aplicativo React Native
+![alt text](reactnative-app.png)
 
 Este projeto consiste na criação de um aplicativo simples em **React Native** com duas páginas principais: uma página de login fake e uma página de exibição de notificações. A página de notificações consulta uma API externa (https://jsonplaceholder.typicode.com/posts?userId=1) para exibir os dados.
 
